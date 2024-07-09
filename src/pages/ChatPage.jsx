@@ -79,7 +79,7 @@ export const ChatPage = () => { // Страница с чатом
       <div className="main-container">
         {storedUser && <div className={`user-list ${theme}`}>
           <p><UserCount socket={socket} /></p>
-          -----------------
+          <hr style={{opacity: "60%"}}/>
           <p>{storedUser.username}</p>
         </div>}
 
