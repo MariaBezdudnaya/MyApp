@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_MESSAGES } from '../store/actions';
 import Message from "./Message";
@@ -26,6 +26,7 @@ export const MessageList = ({ theme }) => {
   const currentUser = useSelector((state) => state.auth.currentUser.token); // Хук для установки текущего пользователя
   const typing = useSelector((state) => state.chat.typing); // Хук для установки состояния typing
   const lastMessageRef = useRef(null); // Добавляем ref к последнему сообщению в списке
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -51,6 +52,13 @@ export const MessageList = ({ theme }) => {
     }
   }, [messages.length]);
 
+  useEffect(() => {
+    if (lastMessageRef.current) {
+      const isScrolledToBottom = lastMessageRef.current.getBoundingClientRect().bottom <= window.innerHeight;
+      setShowScrollButton(!isScrolledToBottom);
+    }
+  }, [messages]);
+  
   return (
     <div className={`messageList ${theme}`}>
       <ul>
@@ -58,12 +66,17 @@ export const MessageList = ({ theme }) => {
           <Message
             key={message.id}
             message={message}
-            ref={index === messages.length - 1 ? lastMessageRef : null} // Добавляем реф только к последнему элементу списка
+            ref={index === messages.length - 1 ? lastMessageRef : null}
             theme={theme}
           />
         ))}
       </ul>
       {typing && <p className={`typing-indicator ${theme}`}>Другой пользователь печатает...</p>}
+      {showScrollButton && (
+        <button  className={`scrollDownButton ${theme}`} onClick={() => lastMessageRef.current.scrollIntoView({ behavior: "smooth" })}>
+          <div className={`scrollDownSymbol ${theme}`}>▼</div> 
+        </button>
+      )}
     </div>
   );
-};
+}

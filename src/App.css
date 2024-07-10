@@ -196,6 +196,36 @@ body .dark {
 }
 
 /* MessageList */
+.scrollDownButton {
+  position: fixed;
+  bottom: 22vh;
+  right: 13vw;
+  z-index: 1;
+  cursor: pointer;
+  padding: 15px;
+  border: none;
+  border-radius: 50%;
+  opacity: 18%;
+  transition: bottom 0.5s, opacity 0.5s;
+}
+
+.light .scrollDownButton {
+  background-color: #7aa79e;
+}
+.dark .scrollDownButton {
+  background-color: #6d6969;
+}
+
+.scrollDownSymbol {
+  font-size: 30px;
+}
+.light .scrollDownSymbol {
+  background-color: #7aa79e;
+}
+.dark .scrollDownSymbol {
+  background-color: #6d6969;
+}
+
 .messageList {
   margin-bottom: 10px;
   height: 65vh;
@@ -207,6 +237,7 @@ body .dark {
   overflow-y: scroll;
   overflow-x: hidden;
   word-wrap: break-word;
+  position: relative; /* Позволяет позиционировать кнопку прокрутки */
 }
 .light .messageList {
   background-color: #fff;
