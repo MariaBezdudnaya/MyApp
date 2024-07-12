@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 let users = [];
-const saltRounds = 10; // Количество раундов для генерации соли
+const saltRounds = 10; 
 
 export const register = (req, res) => {
     const { username, password } = req.body;
