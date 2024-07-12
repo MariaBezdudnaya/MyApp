@@ -1,14 +1,14 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-
 let users = [];
+const saltRounds = 10; // Количество раундов для генерации соли
 
 export const register = (req, res) => {
     const { username, password } = req.body;
     if(users.some(user => user.username === username)) {
         return res.status(400).json({ message: 'User already exists' });
     }
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    const hashedPassword = bcrypt.hashSync(password, saltRounds);
     users.push({ username, password: hashedPassword});
     res.status(201).json({ message: 'Registered successfully' });
 };
