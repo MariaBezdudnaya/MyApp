@@ -8,7 +8,7 @@ const registrationAction = async (username, password) => { // Отправляе
         password
     };
 
-    const res = await fetch('http://localhost:3001/register', { // Отправляем заполненные данные пользователя на сервер
+    const res = await fetch('http://89.223.125.166:3001/register', { // Отправляем заполненные данные пользователя на сервер
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

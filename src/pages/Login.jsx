@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { SET_CURRENTUSER } from '../store/actions';
 
 const loginAction = async (data) => { // Функция для отправки запроса на авторизацию на сервер
-    const res = await fetch('http://localhost:3001/login', {
+    const res = await fetch('http://89.223.125.166:3001/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

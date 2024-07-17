@@ -9,7 +9,7 @@ export const MessageForm = ({ theme }) => {
   const dispatch = useDispatch(); // Хук, позволяющий отправить состояние
 
   const sendMessageToServer = async (message) => { // Функция для отправки сообщения на сервер
-    const res = await fetch('http://localhost:3001/chats', {
+    const res = await fetch('http://89.223.125.166:3001/chats', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',

@@ -5,7 +5,7 @@ import Message from "./Message";
 
 const getChats = async (currentUser) => {
   // Загрузить историю сообщений с сервера
-  const res = await fetch('http://localhost:3001/chats', {
+  const res = await fetch('http://89.223.125.166:3001/chats', {
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
