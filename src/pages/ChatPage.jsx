@@ -31,7 +31,7 @@ export const ChatPage = () => { // Страница с чатом
   const navigation = useNavigate();
   const [active, setActive] = useState(true); // Сменена темы
   const [theme, setTheme] = useState('light'); // Сменена темы
-  const socket = io('http://89.223.125.166:3001/login'); // Подключение к серверу Socket.IO
+  const socket = io('https://89.223.125.166:3001/login'); // Подключение к серверу Socket.IO
   
   useEffect(() => { // Если пользователь существует, при перезагрузке страницы, вместо авторизации остаётся на ней
     const user = localStorage.getItem('user'); 
